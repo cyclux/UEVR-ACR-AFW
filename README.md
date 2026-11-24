@@ -13,9 +13,17 @@ and mono hooks remain restricted to the supported Rally builds
 PE timestamp `6e94fbf7`, image size `0c21d000`).
 The runtime AFW plugin binary is unchanged.
 
+The Ghosting Fix pairs the second eye only with another eye's scene state. Rally
+also renders small extra views during the viewport draw; their states are no longer
+used for an eye, and those views no longer receive the fix.
+
 ## Use
 
-Start a fresh game session and inject using this build. Keep
+Start a fresh game session and inject using this build. On Rally 0.7, inject on the
+first screen (the "click to continue" prompt) when using Cheeky Foveated DLSS:
+injecting after the game had started DLSS on the flat screen caused strong
+eye-to-eye flicker for the rest of the session in testing, while injecting on the
+first screen did not. Keep
 `AFWHistoryShaders.bin` next to `UEVRBackend.dll`. Use AFW CombinedWarping and
 Ghosting Fix. Under **Unreal > Alternate Frame Warping > AFW motion compensation**,
 enable **Allow moving-object history** and **Compensate camera movement**.
